@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "Yorumlar";
+    Layout = "~/Views/Shared/Adminmaster.cshtml";
+}
+
+@using GeziSitesi.Models.Classlar
+@model List<Yorumlar>
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .table-hover tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+        .btn-custom {
+            background-color: #28a745;
+            color: white;
+        }
+
+            .btn-custom:hover {
+                background-color: #218838;
+            }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+            .btn-delete:hover {
+                background-color: #c82333;
+            }
+    </style>
+    <title>Yorum Listesi</title>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Yorum Listesi</h1>
+
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Y.Sahibi</th>
+                    <th>Mail</th>
+                    <th>İçerik</th>
+                    <th>Sil</th>
+                    
+                   
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+
+
+                <tbody>
+                    <tr>
+                        <td>@item.id</td>
+                        <td>@item.kadi</td>
+                        <td>@item.mail</td>
+                        <td>@item.yorum</td>
+                        <td><a href="/Admin/Yorumsil/@item.id" class="btn btn-delete btn-sm">Sil</a></td>
+                       
+                        
+                    </tr>
+                    <!-- Daha fazla satır eklenebilir -->
+                </tbody>
+            }
+        </table>
+     
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

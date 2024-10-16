@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Adminmaster.cshtml";
+}
+@using GeziSitesi.Models.Classlar
+@model List<Blog>
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .table-hover tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+        .btn-custom {
+            background-color: #28a745;
+            color: white;
+        }
+
+            .btn-custom:hover {
+                background-color: #218838;
+            }
+
+        .btn-delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+            .btn-delete:hover {
+                background-color: #c82333;
+            }
+    </style>
+    <title>Blog Listesi</title>
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="mb-4">Blog Listesi</h1>
+
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Başlık</th>
+                    <th>Sil</th>
+                    <th>Güncelle</th>
+                    <th>Detaylar</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+
+
+            <tbody>
+                <tr>
+                    <td>@item.id</td>
+                    <td>@item.baslik</td>
+                    <td><a href="/Admin/Adminsil/@item.id" class="btn btn-delete btn-sm">Sil</a></td>
+                    <td><a href="/Admin/Bloggüncelle/@item.id" class="btn btn-custom btn-sm">Güncelle</a></td>
+                    <td><a href="#" class="btn btn-warning btn-sm">Detay</a></td>
+                </tr>
+                <!-- Daha fazla satır eklenebilir -->
+            </tbody>
+            }
+        </table>
+        <a href="/Admin/Adminekle" class="btn btn-info ">Blog Ekle</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
